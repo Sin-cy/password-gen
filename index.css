@@ -1,0 +1,76 @@
+head,
+body {
+    font-family: JetBrainsMono Nerd Font Mono;
+    background-color: #1f2937;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 55vh;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.highlight {
+    color: #38bdf8;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+}
+
+.main-content {
+    margin-bottom: 20px;
+}
+
+.gen-btn {
+    background-color: #38bdf8;
+    color: #e0f2fe;
+    border: none;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+.gen-btn:hover {
+    background-color: aquamarine;
+    color: #273549;
+}
+
+.render-btn {
+    margin-top: 20px;
+}
+
+.pass1-btn,
+.pass2-btn {
+    background-color: #273549;
+    color: #38bdf8;
+    border: none;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+.pass1-btn:hover,
+.pass2-btn:hover {
+    background-color: aquamarine;
+    color: #273549;
+}
+
+.pass1-btn {
+    margin-right: 10px;
+}
+.pass2-btn {
+    margin-left: 10px;
+}
