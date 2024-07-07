@@ -96,7 +96,7 @@ const characters = [
 ];
 
 //Grab each Characters using array position
-function getCharacters() {
+function getRandomCharacters() {
     const storePassword = Math.floor(Math.random() * characters.length);
     console.log(characters[storePassword]);
     return characters[storePassword];
@@ -106,7 +106,7 @@ function getCharacters() {
 function generatePassword(length) {
     let password = "";
     for (let i = 0; i < length; i++) {
-        password += getCharacters();
+        password += getRandomCharacters();
     }
     console.log(length);
     console.log(password);
