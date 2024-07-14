@@ -1,8 +1,12 @@
+html {
+    background-color: #1f2937;
+}
+
 head,
 body {
     font-family: JetBrainsMono Nerd Font Mono;
-    background-color: #1f2937;
     color: white;
+    background-size: auto;
 }
 
 body {
@@ -54,6 +58,7 @@ body {
     flex-direction: row;
     overflow-y: auto;
     align-items: center;
+    visibility: hidden;
 }
 
 .pass-area {
@@ -71,7 +76,6 @@ body {
     text-align: center;
     resize: none;
     cursor: pointer;
-    visibility: hidden;
 }
 
 .pass-area:hover {

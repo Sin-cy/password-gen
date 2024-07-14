@@ -1,6 +1,3 @@
-const genBtn = document.getElementById("gen-btn");
-const renderBtn = document.getElementById("render-btn");
-
 const characters = [
     "A",
     "B",
@@ -95,67 +92,48 @@ const characters = [
     "/",
 ];
 
-//Grab each Characters using array position
-function getRandomCharacters() {
-    const storePassword = Math.floor(Math.random() * characters.length);
-    console.log(characters[storePassword]);
-    return characters[storePassword];
-}
+const renderArea = document.getElementById("render-area");
+const generateBtn = document.getElementById("gen-btn");
 
-//Arranging each character into a single 15character string
-function generatePassword(length) {
-    let password = "";
+//Creating the Password
+let passwordLength = 15;
+function getPasswords(length) {
+    const randomArray = new Uint8Array(length);
+    crypto.getRandomValues(randomArray);
+
+    let result = "";
     for (let i = 0; i < length; i++) {
-        password += getRandomCharacters();
+        let findRandomPosition = randomArray[i] % characters.length;
+        result += characters[findRandomPosition];
     }
-    console.log(length);
-    console.log(password);
-    return password;
+    return result;
 }
 
-const passwordLength = 15;
-function copyToClipboard() {
-    const password1 = generatePassword(passwordLength);
-    const password2 = generatePassword(passwordLength);
+//Displaying the password on click
+const pass1area = document.getElementById("pass1-area");
+const pass2area = document.getElementById("pass2-area");
 
-    renderBtn.innerHTML = `
-    <button id="pass1-btn" class="pass1-btn"> ${password1} </button>
-    <button id="pass2-btn" class="pass2-btn"> ${password2} </button>
-    `;
+generateBtn.addEventListener("click", () => {
+    pass1area.value = getPasswords(passwordLength);
+    pass2area.value = getPasswords(passwordLength);
 
-    const passwordCopyBtn1 = document.getElementById("pass1-btn");
-    const passwordCopyBtn2 = document.getElementById("pass2-btn");
-
-    function copyPassword(password, copyButton) {
-        navigator.clipboard
-            .writeText(password)
-            .then(() => {
-                console.log("Password copied successfully");
-                const originalText = copyButton.textContent;
-                copyButton.textContent = "Copied!";
-                setTimeout(() => {
-                    copyButton.textContent = originalText;
-                }, 1500);
-            })
-            .catch((err) => {
-                console.error("Failed to copy: ", err);
-                copyButton.textContent = "Copy failed";
-                setTimeout(() => {
-                    copyButton.textContent = password;
-                }, 1500);
-            });
-    }
-
-    passwordCopyBtn1.addEventListener("click", () =>
-        copyPassword(password1, passwordCopyBtn1)
-    );
-    passwordCopyBtn2.addEventListener("click", () =>
-        copyPassword(password2, passwordCopyBtn2)
-    );
-}
-
-// Generate Btn
-genBtn.addEventListener("click", () => {
-    console.log("clicked");
-    copyToClipboard();
+    renderArea.style.visibility = "visible";
 });
+
+//click password to copy to clipboard feature
+async function copyToClipboard(element) {
+    try {
+        await navigator.clipboard.writeText(element.value);
+
+        let originalBackground = element.style.backgroundColor;
+        element.style.backgroundColor = "#38bdf8";
+
+        setTimeout(() => {
+            element.style.backgroundColor = originalBackground;
+        }, 260);
+    } catch (err) {
+        console.error("Error, something went wrong :(");
+    }
+}
+pass1area.addEventListener("click", () => copyToClipboard(pass1area));
+pass2area.addEventListener("click", () => copyToClipboard(pass2area));
