@@ -1,106 +1,134 @@
-html {
-    background-color: #1f2937;
-}
 
-head,
-body {
-    font-family: JetBrainsMono Nerd Font Mono;
-    color: white;
-    background-size: auto;
+html, body {
+    font-family: 'Barlow', JetBrainsMono;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    height: 55vh;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.highlight {
-    color: #38bdf8;
+    background: #181A1B;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .container {
-    width: 80%;
-    max-width: 600px;
+    background: #0f172a;
+    backdrop-filter: blur(50px);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 28rem;
+    width: 100%;
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+    color: #60a5fa;
+    margin-bottom: 1.5rem;
 }
 
 .main-content {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #94a3b8;
 }
 
-.gen-btn {
-    background-color: #38bdf8;
-    color: #e0f2fe;
-    border: none;
-    border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 16px;
-    font-family: "JetBrainsMono Nerd Font Mono", monospace;
-}
-
-.gen-btn:hover {
-    background-color: aquamarine;
-    color: #273549;
-}
-
-.render-area {
-    margin-top: 20px;
-    max-height: 35vh;
-    max-width: 600px;
-    display: flex;
-    flex-direction: row;
-    overflow-y: auto;
-    align-items: center;
-    visibility: hidden;
+.password-container {
+    position: relative;
+    background-color: #1e293b;
+    margin-bottom: 1.5rem;
+    border-radius: 0.375rem;
 }
 
 .pass-area {
-    background-color: #273549;
-    color: #38bdf8;
+    width: 100%;
+    background-color: #1e293b;
+    color: #60a5fa;
     border: none;
-    border-radius: 5px;
-    padding: 7px;
-    font-size: 14px;
-    width: 15ch;
-    height: 1.5em;
-    font-family: "JetBrainsMono Nerd Font Mono", monospace;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: center;
-    resize: none;
-    cursor: pointer;
-}
-
-.pass-area:hover {
-    background-color: aquamarine;
-    color: #273549;
-    overflow: visible;
-    white-space: normal;
-    word-break: break-all;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    padding-right: 2.5rem;
+    font-size: 1rem;
+    font-family: 'Barlow', JetBrainsMono;
+    outline: none;
+    box-sizing: border-box;
 }
 
 .pass-area:focus {
+    box-shadow: 0 0 0 1px #60a5fa;
+}
+
+.fa-bounce {
+    animation: fa-bounce 2s infinite linear;
+}
+
+.copy-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
     border: none;
-    outline: none;
-    overflow: hidden;
+    color: #60a5fa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+    font-size: 17px;
 }
 
-.pass-area {
-    margin-right: 40px;
+.copy-btn:hover {
+    color: #93c5fd;
 }
 
-.separator {
-    border: none; /* Remove default border style */
-    border-top: 1px solid #2f3e53; /* Line color */
-    margin: 20px 0; /* Space around the line */
-    width: 80%; /* Line width */
-    margin-left: auto; /* Center the line horizontally */
-    margin-right: auto; /* Center the line horizontally */
+.gen-btn {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'JetBrainsMono', Barlow;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gen-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.fa-repeat {
+    padding: 9px;
+}
+
+.fa-shake {
+    animation: fa-shake 3s infinite linear;
+}
+
+.info {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-family: 'JetBrainsMono', Barlow;
+    color: #94a3b8;
+}
+
+.protected {
+    color: #4ade80;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
 }

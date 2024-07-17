@@ -1,29 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="index.css" />
-        <title>Passowrd Gen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>Password Generator</title>
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <div class="container">
-            <h1>Password 🔐<br /><span class="highlight">Generator</span></h1>
-            <section class="main-content">
-                <p>Never worry about making up a secure password again.</p>
-                <p>Unlimited generations</p>
-                <p>Copy to clipboard with one click</p>
-            </section>
-            <button class="gen-btn" id="gen-btn">Generate</button>
+            <h1>Password Generator</h1>
+
+            <div class="password-container">
+                <input type="text" id="pass-area" class="pass-area" readonly placeholder="Your password">
+                <button id="copy-btn" class="copy-btn" disabled><i class="fa-solid fa-clone fa-bounce"></i></button>
+            </div>
+
+            <button id="gen-btn" class="gen-btn"><i class="fa-solid fa-repeat fa-shake"></i>  Generate Password</button>
+
+            <div class="info">
+                <p>Click the button above to generate a secure password.</p>
+                <p>Your data is <span class="protected">protected</span>.</p>
+            </div>
         </div>
 
-        <hr class="separator" />
-
-        <div id="render-area" class="render-area">
-            <textarea id="pass1-area" class="pass-area" readonly></textarea>
-            <textarea id="pass2-area" class="pass-area" readonly></textarea>
-        </div>
-
-        <script src="app.js" type="module"></script>
+        <script src="app.js"></script>
     </body>
 </html>

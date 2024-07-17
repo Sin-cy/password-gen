@@ -92,11 +92,12 @@ const characters = [
     "/",
 ];
 
-const renderArea = document.getElementById("render-area");
+const passArea = document.getElementById("pass-area");
 const generateBtn = document.getElementById("gen-btn");
+const copyBtn = document.getElementById("copy-btn");
 
-//Creating the Password
 let passwordLength = 15;
+
 function getPasswords(length) {
     const randomArray = new Uint8Array(length);
     crypto.getRandomValues(randomArray);
@@ -109,31 +110,33 @@ function getPasswords(length) {
     return result;
 }
 
-//Displaying the password on click
-const pass1area = document.getElementById("pass1-area");
-const pass2area = document.getElementById("pass2-area");
-
 generateBtn.addEventListener("click", () => {
-    pass1area.value = getPasswords(passwordLength);
-    pass2area.value = getPasswords(passwordLength);
-
-    renderArea.style.visibility = "visible";
+    passArea.value = getPasswords(passwordLength);
+    copyBtn.disabled = false;
 });
 
-//click password to copy to clipboard feature
-async function copyToClipboard(element) {
+
+const copyToClipboard = async () => {
+    
+    const originalPassword = passArea.value
+
     try {
-        await navigator.clipboard.writeText(element.value);
-
-        let originalBackground = element.style.backgroundColor;
-        element.style.backgroundColor = "#38bdf8";
-
+        await navigator.clipboard.writeText(originalPassword);
+        passArea.value = "Copied to clipboard!";
         setTimeout(() => {
-            element.style.backgroundColor = originalBackground;
-        }, 260);
-    } catch (err) {
-        console.error("Error, something went wrong :(");
+            passArea.value = originalPassword;
+        }, 800);
+        copyBtn.disabled = true
+    } catch (error) {
+        console.error("Error, something went wrong");
     }
 }
-pass1area.addEventListener("click", () => copyToClipboard(pass1area));
-pass2area.addEventListener("click", () => copyToClipboard(pass2area));
+
+copyBtn.addEventListener("click", async () => {
+    setTimeout(() => {
+        copyBtn.disabled = true
+    },900)
+    await copyToClipboard()
+    copyBtn.disabled = false
+});
+
