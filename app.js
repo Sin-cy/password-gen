@@ -42,7 +42,7 @@ function generateStructuredPassword() {
 
 generateBtn.addEventListener("click", () => {
     // Call our new function to generate the structured password.
-    passArea.value = getPasswords(passwordLength);
+    passArea.value = generateStructuredPassword();
     copyBtn.disabled = false;
 });
 
