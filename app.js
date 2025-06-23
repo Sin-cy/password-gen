@@ -10,7 +10,7 @@ const generateBtn = document.getElementById("gen-btn");
 const copyBtn = document.getElementById("copy-btn");
 
 /**
- * @param {number} length - The desired length of the random string.
+ * @param {number} length 
  * @returns {string} A random string.
  */
 function generateRandomGroup(length) {
@@ -25,23 +25,23 @@ function generateRandomGroup(length) {
     return result;
 }
 
-// Generates the full password with the desired structure: group-group-group.
+// generates the full password with the desired structure like xxxxx-xxxxx-xxxxx
 function generateStructuredPassword() {
-    // 1. Create an array to hold the three password groups.
+    // create an array to hold the three password groups.
     const passwordGroups = [];
 
-    // 2. Generate 3 groups, each with 8 characters, and add them to the array.
+    // generate 3 groups, each with 8 characters and add them to the array.
     for (let i = 0; i < 3; i++) {
         passwordGroups.push(generateRandomGroup(8));
     }
 
-    // 3. Join the groups together with a dash and return the final password.
+    // join the groups together with a dash and return the final password.
     return passwordGroups.join(" - ");
 }
 
 
 generateBtn.addEventListener("click", () => {
-    // Call our new function to generate the structured password.
+    // call our new function to generate the structured password.
     passArea.value = generateStructuredPassword();
     copyBtn.disabled = false;
 });
